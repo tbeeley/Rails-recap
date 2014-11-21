@@ -46,7 +46,9 @@ describe 'articles' do
 			fill_in 'article_text', with: 'So boring'
 			click_button('Save Article')
 
-			expect(page).to have_content('There are currently no articles')
+			expect(page).to have_content('Title is too short (minimum is 5 characters)')
+			expect(page).to have_content('Text is too short (minimum is 10 characters)')
+
 			expect(current_path).to eq '/articles'
 		end
 
