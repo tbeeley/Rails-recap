@@ -1,5 +1,8 @@
 <h1>Listing articles</h1>
- 
+
+<%= link_to 'New article', new_article_path %>
+
+<% if @articles.any? %> 
 <table>
   <tr>
     <th>Title</th>
@@ -13,3 +16,9 @@
     </tr>
   <% end %>
 </table>
+
+<% else %> 
+  There are currently no articles
+<% end %>
+
+<%= link_to 'Back', articles_path %>
