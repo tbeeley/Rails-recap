@@ -27,7 +27,7 @@ describe 'articles' do
 
 	context 'creating posts' do
 
-		it 'adds the posts to a form' do
+		it 'adds the articles to a form' do
 			visit '/articles'
 			click_link('New article')
 			fill_in 'article_title', with: 'Sparkling water: who really knows the story'
@@ -39,17 +39,15 @@ describe 'articles' do
 			expect(current_path).to eq '/articles/1'
 		end
 
-		it 'adds the posts to a form' do
+		it 'does not add an invalid form' do
 			visit '/articles'
 			click_link('New article')
-			fill_in 'article_title', with: 'Sparkling water: who really knows the story'
-			fill_in 'article_text', with: 'At first sight'
+			fill_in 'article_title', with: 'Golf'
+			fill_in 'article_text', with: 'So boring'
 			click_button('Save Article')
 
-			expect(page).to have_content('Sparkling water: who really knows the story')
-			expect(page).to have_content('At first sight')
-			expect(current_path).to eq '/articles/1'
-
+			expect(page).to have_content('There are currently no articles')
+			expect(current_path).to eq '/articles'
 		end
 
 	end
